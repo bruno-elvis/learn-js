@@ -10,7 +10,7 @@ const arrayTeste = [13, 31, 2, 'Opa', true, 2];
 
 console.log('Array de Teste: ' + arrayTeste);
 
-arrayTeste.forEach(function(v, i){ (typeof v === 'string') && console.log(`FOREACH: idx: ${v}`)}) // Uma iteração simples em um array, sem retorno
+arrayTeste.forEach(function(v, i, array){ (typeof v === 'string') && console.log(`FOREACH: idx: Valor: ${v}, Índice: ${i}, Array: ${array}`)}) // Uma iteração simples em um array, sem retorno
 
 arrayMAP = arrayTeste.map(function(v){return v += 1}) // Retorna a transformação de elementos do array, retorna o resultado da operação (array)
 
@@ -18,7 +18,7 @@ arrayEVERY = arrayTeste.every(function(v){return typeof v === 'boolean'}) // Tod
 
 arraySOME = arrayTeste.some(function(v){return typeof v === 'string'}) // Algum elemento atende a condição? Retorna somente um booleano. Sim = True / Não = False
 
-arrayFILTER = arrayTeste.filter(function(v, i){return typeof v === 'number'}) // Retorna os elementos do array que atendem a condição passada. Retorna um novo array
+arrayFILTER = arrayTeste.filter(function(v){return typeof v === 'number'}) // Retorna os elementos do array que atendem a condição passada. Retorna um novo array
 
 console.log('MAP: ' + arrayMAP);
 console.log('EVERY: ' + arrayEVERY);
@@ -44,11 +44,11 @@ console.log('MÉTODOS DE MANIPULAÇÃO DE ARRAYS: ');
 
 const arrayTeste2 = [0, 5]
 
-console.log(arrayTeste.toString() + ' ' + typeof arrayTeste.toString()); // Converte um Array em uma String
+console.log('Array para String: ' + arrayTeste.toString() + ' typeof: ' + typeof arrayTeste.toString()); // Converte um Array em uma String
 console.log('JOIN: ' + arrayTeste.join() + ' ' + typeof arrayTeste.join()); // Converte um Array em uma String, pode receber um delimitador dos valores por parâmetro, retorna sempre uma String
 console.log('JOIN (Com Delimitador): ' + arrayTeste.join(' - ') + ' ' + typeof arrayTeste.join(' - '));
 console.log('CONCAT: ' + arrayTeste.concat(arrayTeste2, 12, 13) + ' ' + typeof arrayTeste.concat(arrayTeste2, 12, 13)); // Concatena arrays inteiros, retorna uma String
-/*Para copiar uma Array*/
+// Boa prática para copiar uma Array
 let arrayTesteCopia = [].concat(arrayTeste);
 console.log('arrayTesteCópia (CONCAT): ' + arrayTesteCopia);
 
@@ -103,12 +103,13 @@ const objSM = {
 /* SPREAD */
 const fmlBBN = ['Niti', 'Bim'];
 const fml = meuNomeCompleto.push(...fmlBBN); // não passa um Array como parâmetro, passa os valores separadamente do Array de origem como parâmetro
-console.log(meuNomeCompleto);
+console.log('Array com nome completo concatenado com outro Array (fmlBBN): ' + meuNomeCompleto);
+
 const [ meuPrimeiroNome, ...restoDoMeuNome ] = meuNomeCompleto;
 console.log('Obtendo resto do meu nome com Spred: ', restoDoMeuNome);
 
 /* DESTRUCTING */
-const [ primeiroNome, sobreNome, ,ultimoNome ] = meuNomeCompleto; // Com Arrays (cara parâmetro cria uma variável a partir de um índice de um Array, pode receber qualquer nome, pode ser vazio, onde o valor dentro do Array de origem será ignorado)
+const [ primeiroNome, sobreNome, , ultimoNome ] = meuNomeCompleto; // Com Arrays (cara parâmetro cria uma variável a partir de um índice de um Array, pode receber qualquer nome, pode ser vazio, onde o valor dentro do Array de origem será ignorado)
 const { proxima } = objSM; // Com objetos (o parâmetro deve ser uma chave no objeto de origem, devendo ser sempre o mesmo nome)
 
 console.log(primeiroNome);
@@ -142,6 +143,8 @@ console.log();
 console.log();
 
 /* TRABALHANDO COM DATAS */
+console.log('-- TRABALHANDO COM DATAS --');
+
 const data = new Date(Date.UTC(2022, 3, 28, 3, 0, 0));
 const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
